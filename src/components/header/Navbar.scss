@@ -9,17 +9,27 @@
   border-bottom: 2px solid black;
   padding-bottom: 1em;
   padding-top: 1em;
-
   img{
     width: 13em;
   }
 
   .nav-itens{
     display: flex;
-    column-gap: 0.5rem;
-    .nav-item{
+    column-gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    .login{
+      border: 1px solid $customPurpleDark;
+      padding: 0.5em 0.8em 0.5em 0.8em;
+      border-radius: 4px;
+      &:hover{
+        background-color: $customPurple;
+        color: white;
+      }
+    }
+    & > * {
+      color: $customPurple;
       text-decoration: none;
-      color: black;
     }
   }
 
@@ -55,10 +65,20 @@
     .nav-item-hamburguer{
       display: flex;
       flex-direction: column;
-
-      a{
+      margin-left: 1em;
+      .login{
+        border: 1px solid $customPurpleDark;
+        padding: 0.5em 0.8em 0.5em 0.8em;
+        border-radius: 4px;
+        &:hover{
+          background-color: $customPurple;
+          color: white;
+        }
+      }
+      & > * {
+        color: $customPurple;
         text-decoration: none;
-        font-size: 2em;
+        font-size: 26px;
       }
     }
   }

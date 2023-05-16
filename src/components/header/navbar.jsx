@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {NavLink} from "react-router-dom"
 import "./Navbar.scss";
 import logoImg from '../../assets/images/logo.png'
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -17,8 +18,9 @@ function Navbar() {
   return (
     <>
       <nav className="nav">
-        <img src={logoImg} alt="" />
-        
+        <NavLink to='/'>
+          <img src={logoImg} alt="" />
+        </NavLink>
         {
           iconActive ? 
           <BsXLg 
@@ -33,19 +35,15 @@ function Navbar() {
         />
         }
         <div className="nav-itens">
-          <a href="#" className="nav-item">Item 1</a>
-          <a href="#" className="nav-item">Item 2</a>
-          <a href="#" className="nav-item">Item 3</a>
-          <a href="#" className="nav-item">Item 4</a>
+          <NavLink to='/register'><p className="register">Register</p></NavLink>
+          <NavLink to='/login'><p className="login">Login</p></NavLink>
         </div>
       </nav>
       <nav className="nav-hamburguer">
         <div className={`nav-itens-hamburguer ${isMenuActive ? "active" : ""}`}>
           <div className="nav-item-hamburguer">
-            <a href="#" className="nav-item">Item 1</a>
-            <a href="#" className="nav-item">Item 2</a>
-            <a href="#" className="nav-item">Item 3</a>
-            <a href="#" className="nav-item">Item 4</a>
+          <NavLink to='/register'><p className="register">Register</p></NavLink>
+          <NavLink to='/login'><p className="login">Login</p></NavLink>
           </div>
         </div>
       </nav>
