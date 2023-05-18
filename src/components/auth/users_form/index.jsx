@@ -4,12 +4,12 @@ import { useState } from 'react'
 import UsersServices from '../../../services/users'
 
 const initialState = {
-  name: '', email: '', password: ''
+  email: '', password: ''
 }
 
-const RegisterForm = () => {
+const LoginForm = () => {
     const [fields, setFields] = useState(initialState)
-    const [redirectToLogin, setRedirectToLogin] = useState(false)
+    const [redirectToNotes, setRedirectToNotes] = useState(false)
     const [error, setError] = useState(false)
 
     const handleFieldsChange = event => {
@@ -22,32 +22,34 @@ const RegisterForm = () => {
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const user = await UsersServices.register({name: fields.name, email: fields.email, password: fields.password})
-        setRedirectToLogin(true)
+        await UsersServices.login({email: fields.email, password: fields.password}).then((dados) => {
+          
+        })
+        setRedirectToNotes(true)
       } catch (error) {
         setError(true)
       }
     }
 
-    if(redirectToLogin){
-      return navigate('/login')
+    if(redirectToNotes){
+      navigate('/notes')
+      return null
     }
 
     return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
-      <input type="text" name="name" id="name" value={fields.name} required onChange={handleFieldsChange}/>
       <label htmlFor="email">Email:</label>
       <input type="text" name="email" id="email" value={fields.email} required onChange={handleFieldsChange}/>
       <label htmlFor="password">Password:</label>
       <input type="password" name="password" id="password" value={fields.password} required onChange={handleFieldsChange}/>
       {error && <p style={{color: 'rgb(255, 0, 0)', margin: '0'}}>Invalid password or email</p>}
       <div className="btnLoginOrRegister">
-        <NavLink to='/login'><p className="login text">Login or</p></NavLink>
-        <button type='submit' className="register text">Register</button>
+        <NavLink to='/register' className='registerForm'><p>Register or</p></NavLink>
+        <button type='submit' className="loginForm">Login</button>
+        
       </div>
     </form>
     )
 }
 
-export default RegisterForm
+export default LoginForm

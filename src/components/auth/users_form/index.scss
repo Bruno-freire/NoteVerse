@@ -1,0 +1,22 @@
+@import '../../../App.scss';
+
+.loginForm{
+  border: 1px solid $customPurpleDark;
+  padding: 0.5em 0.8em 0.5em 0.8em;
+  height: 3em;
+  width: 6em;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  color: $customPurple;
+  &:hover{
+    background-color: $customPurple;
+    color: white;
+  }
+}
+
+.registerForm{
+  & > p {
+    color: $customPurple !important;
+  }
+}
