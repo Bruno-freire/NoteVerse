@@ -35,7 +35,7 @@ const LoginForm = () => {
     if (redirectToNotes) {
       navigate('/notes')
     }
-  }, [redirectToNotes, navigate])
+  }, [redirectToNotes])
 
   return (
     <form onSubmit={handleSubmit}>
