@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Navigate, Route, Routes} from "react-router-dom";
+import React from "react";
+import { Route, Routes} from "react-router-dom";
 import HomeScreen from "./screens/home";
 import RegisterScreen from './screens/auth/register'
 import LoginScreen from './screens/auth/login'
 import NotesIndex from './screens/notes/index'
 import UsersEditScreen from './screens/users/edit'
-import PrivateRoute from "./privateRoute";
+import PrivateRouteIsLoggedIn from "./components/auth/private_router/privateRoutesInLoggedIn";
+import PrivateRouteNotLoggedIn from "./components/auth/private_router/privateRoutesNotLoggedIn";
 
 
 const AppRoutes = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-  useEffect(() => {
-    const checkLoggedInStatus = () => {
-      const user = localStorage.getItem('user')
-      setIsLoggedIn(!!user)
-    }
-    checkLoggedInStatus();
-  }, [])
 
   return (
     <Routes>
       <Route path="/" element={<HomeScreen/>} />
       <Route path='/register' element={<RegisterScreen/>} />
-      <Route path='/login' element={isLoggedIn ? <Navigate to='/notes'/> : <LoginScreen/>} />
-      <Route path='/notes' element={<PrivateRoute><NotesIndex/></PrivateRoute>} />
+      <Route path='/login' element={<PrivateRouteNotLoggedIn element={<LoginScreen/>} redirectTo='/notes'/>} />
+      <Route path='/notes' element={<PrivateRouteIsLoggedIn element={<NotesIndex/>} redirectTo='/login'/>} />
       <Route path='/users/edit' element={<UsersEditScreen/>} />
       <Route path="*" />
     </Routes>
