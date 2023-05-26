@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { BsXLg, GiHamburgerMenu } from 'react-icons/all';
+import { BsXLg, FaList, GiHamburgerMenu } from 'react-icons/all';
 import logoImg from '../../assets/images/logo-white.png';
 import "./index.scss";
 
-function HeaderLogged() {
+function HeaderLogged(props) {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [iconActive, setIconActive] = useState(false);
 
@@ -26,9 +26,12 @@ function HeaderLogged() {
   return (
     <>
       <nav className="logged">
-        <NavLink to='/'>
-          <img src={logoImg} alt="" />
-        </NavLink>
+        <div className="leftLogged">
+          <NavLink to='/'>
+            <img src={logoImg} alt="" />
+          </NavLink>
+          <FaList className="iconBurguer" onClick={() => {props.setIsOpen(true)}} />
+        </div>
         {iconActive && (
           <BsXLg
             className="icon"
