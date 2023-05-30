@@ -5,10 +5,10 @@ import logoImg from '../../assets/images/logo.png'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {BsXLg} from 'react-icons/bs'
 
-
 function Navbar() {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [iconActive, setIconActive] = useState(false)
+
 
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);

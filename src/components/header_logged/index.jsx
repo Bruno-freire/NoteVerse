@@ -50,7 +50,7 @@ function HeaderLogged(props) {
           <div onClick={toggleMenu} className="name">{name}</div>
         </div>
       </nav>
-      <nav className="nav-hamburguer teste">
+      <nav className="nav-hamburguer">
         <div className={`nav-itens-hamburguer ${isMenuActive ? "active" : ""}`}>
           <div className="nav-item-hamburguer">
             <p>User Edit</p>

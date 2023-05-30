@@ -1,4 +1,7 @@
-.bm-menu{
-  background-color: white;
-  padding-top: 1em;
+.bm-menu-wrap {
+  background-color: #f5f5f5;
+  margin: 0;
+  height: calc(100% - 4.7em) !important;
+  overflow-y: auto; /* Habilitar a rolagem vertical dentro do menu */
+  z-index: 0;
 }
