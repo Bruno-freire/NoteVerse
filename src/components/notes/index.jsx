@@ -14,7 +14,19 @@ const Notes = (props) => {
     if(response.data.length >= 1) {
       setNotes(response.data.reverse())
       setCurrentNote(response.data[0])
+    }else {
+      setNotes([])
     }
+  }
+
+  const createNote = async () => {
+    await NotesService.create();
+    fetchNotes()
+  }
+
+  const deleteNote = async (note) => {
+    await NotesService.delete(note._id)
+    fetchNotes()
   }
 
   const selectNote = (id) => {
@@ -37,7 +49,13 @@ const Notes = (props) => {
       customCrossIcon={false}
       outerContainerId='notes'
       >
-      <ListNotes notes={notes} selectNote={selectNote} currentNote={currentNote}/>
+      <ListNotes 
+      notes={notes} 
+      selectNote={selectNote} 
+      currentNote={currentNote} 
+      createNote={createNote}
+      deleteNote={deleteNote}
+      />
       </Menu>
     </main>
   </>)

@@ -1,5 +1,26 @@
+@import '../../../App.scss';
+
 .bm-list > *{
   margin: none;
+}
+#noteHeader{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  h2{
+    cursor: default;
+  }
+  button{
+    border: 1.5px solid $customPurple;
+    border-radius: 0.2rem;
+    font-size: 20px;
+    color: $customPurple;
+    cursor: pointer;
+    &:hover{
+      background-color: $customPurple;
+      color: #f3f3f3;
+    }
+  }
 }
 .notesList {
   display: flex;
@@ -15,13 +36,33 @@
     &:hover{
       background-color: #e8e8e8;
     }
+    h2{
+      font-size: 20px;
+    }
+    p{
+      font-size: 16px;
+    }
     span{
       background-color: #3c3c3d;
       color:white;
       border-radius: 0.1em;
-      padding: 0.1rem;
+      padding: 0.1rem 0.3rem;
       font-size: 14px;
     }
+    .dataAndBin{
+      display: flex ;
+      align-items: center ;
+      justify-content: space-between ;
+      padding-right: 0.2em;
+      #bin{
+        font-size: 20px;
+        &:hover{
+          color: $customPurple;
+        }
+      }
+
+    }
+
   }
   .noteList > * {
     margin: 0;

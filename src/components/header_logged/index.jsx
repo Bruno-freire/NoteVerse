@@ -30,7 +30,7 @@ function HeaderLogged(props) {
           <NavLink to='/'>
             <img src={logoImg} alt="" />
           </NavLink>
-          <FaList className="iconBurguer" onClick={() => {props.setIsOpen(true)}} />
+          <FaList className="iconBurguer" id="notes" onClick={() => {props.setIsOpen(true)}} />
         </div>
         {iconActive && (
           <BsXLg
