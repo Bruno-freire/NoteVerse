@@ -40,9 +40,9 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email:</label>
-      <input type="text" name="email" id="email" autocomplete="off" placeholder="Type your email" value={fields.email} required onChange={handleFieldsChange} />
+      <input type="text" name="email" id="email" autoComplete="off" placeholder="Type your email" value={fields.email} required onChange={handleFieldsChange} />
       <label htmlFor="password">Password:</label>
-      <input type="password" name="password" id="password" autocomplete="off" placeholder="Type your password" value={fields.password} required onChange={handleFieldsChange} />
+      <input type="password" name="password" id="password" autoComplete="off" placeholder="Type your password" value={fields.password} required onChange={handleFieldsChange} />
       {error && <p style={{ color: 'rgb(255, 0, 0)', margin: '0' }}>Invalid password or email</p>}
       <div className="btnLoginOrRegister">
         <NavLink to="/register" className="registerForm">
