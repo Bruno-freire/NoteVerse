@@ -12,7 +12,6 @@ const ListNotes = (props) => {
       <div className="notesList" >
         {props.notes.map((item, key) => {
           const widthTitle = item.title.length
-          console.log(widthTitle)
           const firstLetter = item.title.charAt(0).toUpperCase();
           const titleWithoutFirstLetter = item.title.substring(1);
           const modifiedTitle = firstLetter + titleWithoutFirstLetter;
