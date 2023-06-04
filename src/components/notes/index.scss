@@ -1,7 +1,40 @@
+@import '../../App.scss';
+
 .bm-menu-wrap {
   background-color: #f5f5f5;
   margin: 0;
   height: calc(100% - 4.7em) !important;
   overflow-y: auto; /* Habilitar a rolagem vertical dentro do menu */
   z-index: 0;
+}
+#notes-editor{
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4.66em);
+  margin: 0;
+}
+#btnUpdate {
+  width: 25%;
+  right: 0;
+  position: absolute;
+  height: 2.2em;
+  background-color: $customPurple;
+  color: white;
+  font-size: 1em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid $customPurple;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover{
+    transition: 0.3s;
+    background-color: white;
+    color: black;
+  }
+}
+
+@media (max-width: 557px) {
+  #btnUpdate{
+    width: 100%;
+    position: relative;
+  }
 }

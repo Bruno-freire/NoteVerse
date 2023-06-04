@@ -1,5 +1,8 @@
 @import '../../../App.scss';
-
+.ck-content{
+  max-height: 1px;
+  overflow-y: auto;
+}
 .bm-list > *{
   margin: none;
 }

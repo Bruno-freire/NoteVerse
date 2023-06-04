@@ -1,0 +1,9 @@
+.ck-content{
+  min-height: calc(100vh - 6.72em);
+}
+
+@media (max-width: 557px) {
+  .ck-content{
+    min-height: calc(100vh - 8.3em);
+  }
+}
