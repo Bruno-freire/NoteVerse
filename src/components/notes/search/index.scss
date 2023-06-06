@@ -1,0 +1,13 @@
+.search{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1em;
+  & > input {
+    height: 1.5em;
+  }
+  .close{
+    cursor: pointer;
+  }
+}

@@ -5,13 +5,16 @@ import NotesService from '../../services/notes'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Editor from "./editor"
+import Search from './search'
 
 const Notes = (props) => {
   const [notes, setNotes] = useState([]);
   const [currentNote, setCurrentNote] = useState({title: '', body: '', id: ''});
+  const [query, setQuery] = useState("");
 
   async function fetchNotes() {
     const response = await NotesService.index();
+    setQuery('')
     if (response.data.length >= 1) {
       setNotes(response.data.reverse())
       setCurrentNote(response.data[0])
@@ -20,7 +23,6 @@ const Notes = (props) => {
     setCurrentNote({title: '', body: '', id: ''})
  }
   }
-
 
   const createNote = async () => {
     await NotesService.create();
@@ -45,8 +47,6 @@ const Notes = (props) => {
     setCurrentNote({ ...updatedNote.data });
   };
   
-
-
   const selectNote = (id) => {
     const note = notes.find((note) => note._id === id);
     setCurrentNote(note);
@@ -60,6 +60,11 @@ const Notes = (props) => {
       updateNote({ 'title': title, 'body': contentElement.innerHTML });
     }
   };
+
+  const searchNotes = async (query) => {
+    const response = await NotesService.search(query)
+    setNotes(response.data);
+  }
 
   useEffect(() => {
     fetchNotes()
@@ -76,6 +81,7 @@ const Notes = (props) => {
       customCrossIcon={false}
       outerContainerId='notes'
       >
+      <Search fetchNotes={fetchNotes} setCurrentNote setQuery={setQuery} query={query} searchNotes={searchNotes}/>
       <ListNotes 
       notes={notes} 
       selectNote={selectNote} 
