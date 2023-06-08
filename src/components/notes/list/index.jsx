@@ -6,13 +6,12 @@ const ListNotes = (props) => {
   return (
     <>
       <div id="noteHeader" >
-        <h2>{props.notes.length} Notes</h2>
+        <h2><span>{props.notes.length}</span> Notes</h2>
         <button onClick={() => props.createNote()}>Note +</button>
       </div>
       <div className="notesList" >
         {props.notes.map((item, key) => {
           const widthTitle = item.title.length
-          console.log(widthTitle)
           const firstLetter = item.title.charAt(0).toUpperCase();
           const titleWithoutFirstLetter = item.title.substring(1);
           const modifiedTitle = firstLetter + titleWithoutFirstLetter;
