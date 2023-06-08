@@ -89,9 +89,10 @@ const Notes = (props) => {
       />
       
       </Menu>
-      <div id="notes-editor">
+      <div translate='no' id="notes-editor">
         <Editor
         note={currentNote}
+        updateCurrentNote={updateCurrentNote}
         />
         <button id='btnUpdate' onClick={updateCurrentNote}>Save</button>
       </div>

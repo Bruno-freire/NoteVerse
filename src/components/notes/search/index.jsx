@@ -1,6 +1,7 @@
-import { BsXLg } from 'react-icons/all'; 
-import './index.scss' 
 import { useState } from 'react'; 
+import './index.scss' 
+import { BsXLg } from 'react-icons/bs';
+
 function Search (props) {   
   const [haveLetter, setHaveLetter] = useState(false)    
   const handleKeyDown = (e) => {     

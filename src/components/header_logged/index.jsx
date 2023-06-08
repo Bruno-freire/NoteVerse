@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { BsXLg, FaList, GiHamburgerMenu } from 'react-icons/all';
+import { BsXLg } from 'react-icons/bs';
+import { FaList } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
+
 import logoImg from '../../assets/images/logo-white.png';
 import "./index.scss";
 
