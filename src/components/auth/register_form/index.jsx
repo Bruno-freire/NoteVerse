@@ -36,11 +36,11 @@ const RegisterForm = () => {
     return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name:</label>
-      <input type="text" name="name" id="name" autocomplete="off" placeholder="Type your name" value={fields.name} required onChange={handleFieldsChange}/>
+      <input type="text" name="name" id="name" autoComplete="off" placeholder="Type your name" value={fields.name} required onChange={handleFieldsChange}/>
       <label htmlFor="email">Email:</label>
-      <input type="text" name="email" id="email" autocomplete="off" placeholder="Type your e-mail" value={fields.email} required onChange={handleFieldsChange}/>
+      <input type="text" name="email" id="email" autoComplete="off" placeholder="Type your e-mail" value={fields.email} required onChange={handleFieldsChange}/>
       <label htmlFor="password">Password:</label>
-      <input type="password" name="password" id="password" autocomplete="off" placeholder="Create a password" value={fields.password} required onChange={handleFieldsChange}/>
+      <input type="password" name="password" id="password" autoComplete="off" placeholder="Create a password" value={fields.password} required onChange={handleFieldsChange}/>
       {error && <p style={{color: 'rgb(255, 0, 0)', margin: '0'}}>Invalid password or email</p>}
       <div className="btnLoginOrRegister">
         <NavLink to='/login'><p className="login text">Login or</p></NavLink>

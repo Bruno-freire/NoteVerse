@@ -22,7 +22,6 @@ const Notes = (props) => {
     }
   }
 
-
   const createNote = async () => {
     await NotesService.create();
     fetchNotes()
@@ -46,8 +45,6 @@ const Notes = (props) => {
     setCurrentNote(updatedNote.data);
   };
   
-
-
   const selectNote = (id) => {
     const note = notes.find((note) => note._id === id);
     setCurrentNote(note);

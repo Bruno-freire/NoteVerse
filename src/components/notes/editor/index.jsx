@@ -35,16 +35,21 @@ function Editor(props) {
       color: 'black',
     },
   };
+  const handleKeyDown = (e) => {
+    console.log(e.key)
+  }
 
   return (
-    <>
+    <div onKeyDown={handleKeyDown}>
       <CKEditor
       editor={ClassicEditor}
       config={editorConfiguration}
       data={currentContent}
       onChange={handleEditorChange}
     />
-    </>
+    </div>
+      
+    
   )
 }
 
