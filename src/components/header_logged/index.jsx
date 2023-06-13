@@ -26,6 +26,10 @@ function HeaderLogged(props) {
     navigate('/login')
   };
 
+  const handleEditUser = () => {
+    navigate('/users/edit')
+  }
+
   return (
     <>
       <nav className="logged">
@@ -33,7 +37,7 @@ function HeaderLogged(props) {
           <NavLink to='/'>
             <img src={logoImg} alt="" />
           </NavLink>
-          <FaList className="iconBurguer" id="notes" onClick={() => {props.setIsOpen(true)}} />
+          {props.showIcons && <FaList className="iconBurguer" id="notes" onClick={() => {props.setIsOpen(true)}} />}
         </div>
         {iconActive && (
           <BsXLg
@@ -56,7 +60,7 @@ function HeaderLogged(props) {
       <nav className="nav-hamburguer">
         <div className={`nav-itens-hamburguer ${isMenuActive ? "active" : ""}`}>
           <div className="nav-item-hamburguer">
-            <p>User Edit</p>
+            <p onClick={handleEditUser}>User Edit</p>
             <p onClick={handleRemoveUserAndToken}>LogOut</p>
           </div>
         </div>

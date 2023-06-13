@@ -25,7 +25,10 @@ function Search (props) {
   return (     
   <div className="search">       
   <input type="text" onChange={(e) => props.setQuery(e.target.value)} onKeyDown={handleKeyDown} value={props.query} placeholder="Search note..."  />
-  <BsXLg className='close' onClick={props.fetchNotes}/>     
+  <BsXLg className='close' onClick={() => {
+    props.setQuery('')
+    props.fetchNotes()
+  }}/>     
   </div>          
   ) 
 }  

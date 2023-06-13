@@ -5,7 +5,7 @@ import Notes from "../../../components/notes";
 function NotesScreen() {
   const [isOpen, setIsOpen] = useState(false)
   return (<>
-    <HeaderLogged setIsOpen={setIsOpen}/>
+    <HeaderLogged setIsOpen={setIsOpen} showIcons={true}/>
     <Notes setIsOpen={setIsOpen} isOpen={isOpen}/>
   </>)
 };
