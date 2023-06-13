@@ -12,9 +12,20 @@ const UsersServices = {
     localStorage.removeItem('token', null)
   },
   delete: async () => {
-    const response = await Api.delete('/users', {headers: {'x-access-token': localStorage.getItem('token')}})
+    await Api.delete('/users', { headers: {'x-access-token': localStorage.getItem('token')} })
     localStorage.removeItem('user', null)
     localStorage.removeItem('token', null)
+  },
+  update: async (params) => {
+    await Api.put('/users', params, { headers: {'x-access-token': localStorage.getItem('token')} })
+    const userLocal = JSON.parse(localStorage.getItem('user'))
+    userLocal.name = params.name
+    userLocal.email = params.email
+    localStorage.setItem('user', JSON.stringify(userLocal))
+  },
+  updatePassword: async (params) => {
+    const response = await Api.put('/users/password', params, { headers: {'x-access-token': localStorage.getItem('token')} })
+    console.log(response)
   }
 }
 

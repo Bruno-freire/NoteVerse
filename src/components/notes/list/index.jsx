@@ -66,7 +66,7 @@ const ListNotes = (props) => {
     <>
       <div id="noteHeader">
         <h2><span>{notes.length}</span> Notes</h2>
-        <button onClick={() => props.createNote()}>Note +</button>
+        <button id="newNote" onClick={() => props.createNote()}>Note +</button>
       </div>
       <div className="notesList">
         {notes.map((item, key) => {

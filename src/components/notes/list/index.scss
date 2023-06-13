@@ -13,8 +13,10 @@
   h2{
     cursor: default;
   }
-  button{
+  #newNote{
     border: 1.5px solid $customPurple;
+    background-color: transparent;
+    padding: 0.2em 0.5em;
     border-radius: 0.2rem;
     font-size: 20px;
     color: $customPurple;

@@ -1,0 +1,28 @@
+@import "../../App.scss";
+
+.cardComponent{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(247, 245, 245);
+  box-shadow: 0em 5px 10px -8px;
+  display: flex;
+  flex-direction: column;
+  padding: 2em 1em;
+  max-width: 16em;
+  form{
+    width: 100%;
+    height: 12em;
+    button{
+      margin-top: 2em;
+      background-color: $customPurple;
+      &:hover{
+        background-color: $customPurpleDark;
+      }
+    }
+  }
+  p{
+    padding-left: 2em;
+  }
+}
+
+
