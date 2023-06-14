@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HeaderLogged from "../../../components/header_logged";
 import UsersDelete from "../../../components/user/userDelete";
 import FormEditUser from "../../../components/user/userEditForm";
@@ -8,7 +9,9 @@ const UsersEditScreen = () => (
     <>
       <HeaderLogged showIcons={false}/>
       <div id="mainUserEdit">
+        
         <div className="cards">
+        <Link id="linkBack" to="/notes">Back</Link>
           <FormEditUser/>
           <FormEditPasswordUser/>
           <UsersDelete/>

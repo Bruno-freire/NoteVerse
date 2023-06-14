@@ -35,8 +35,10 @@ function Editor(props) {
       color: 'black',
     },
   };
-  const handleKeyDown = (e) => {
-    console.log(e.key)
+  const handleKeyDown = (event) => {
+    if(!props.note){
+      event.preventDefault()
+    }
   }
 
   return (

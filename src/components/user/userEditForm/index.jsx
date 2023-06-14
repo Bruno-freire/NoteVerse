@@ -44,10 +44,10 @@ function FormEditUser () {
   return (
     <>
       <div className="card">
-        <h2>Informações pessoais</h2>
+        <h2>Personal information</h2>
         <div className="cardComponent">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Nome: </label>
+            <label htmlFor="name">Name: </label>
             <input type="text" id='name' required name='name' value={fields.name} className='name' onChange={handleFieldsChange}/>
             <label htmlFor="email">Email</label>
             <input type="text" id='email' required name='email' value={fields.email} className='email'  onChange={handleFieldsChange}/>

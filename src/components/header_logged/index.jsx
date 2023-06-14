@@ -14,6 +14,9 @@ function HeaderLogged(props) {
   const navigate = useNavigate()
 
   const { name } = JSON.parse(localStorage.getItem('user'));
+  const regex = /^(\S+)/;
+  const nameMatch = name.match(regex)[0];
+
 
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
@@ -54,7 +57,7 @@ function HeaderLogged(props) {
           />
         )}
         <div className="nav-itens ">
-          <div onClick={toggleMenu} className="name">{name}</div>
+          <div onClick={toggleMenu} className="name">{nameMatch}</div>
         </div>
       </nav>
       <nav className="nav-hamburguer">
