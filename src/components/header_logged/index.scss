@@ -27,7 +27,7 @@
      cursor: pointer;
      &:hover{
       background-color: white;
-      color: black;
+      color: $customPurple;
      }
     }
   }
@@ -45,7 +45,9 @@
       cursor: pointer;
       border-radius: 0.3rem;
       &:hover{
-        background-color: #5837da;
+        transition: 0.2s;
+        background-color: white;
+        color: $customPurple;
       }
     }
   }
