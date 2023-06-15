@@ -18,6 +18,7 @@ const Notes = (props) => {
       setNotes(newNotes)
       setCurrentNote(response.data[0])
     } else {
+      setCurrentNote({title: '', body: '', id: ''})
       setNotes([]);
     }
   }

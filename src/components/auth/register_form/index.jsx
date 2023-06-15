@@ -9,7 +9,6 @@ const initialState = {
 
 const RegisterForm = () => {
     const [fields, setFields] = useState(initialState)
-    const [redirectToLogin, setRedirectToLogin] = useState(false)
     const [error, setError] = useState(false)
 
     const handleFieldsChange = event => {
@@ -23,14 +22,10 @@ const RegisterForm = () => {
       event.preventDefault();
       try {
         const user = await UsersServices.register({name: fields.name, email: fields.email, password: fields.password})
-        setRedirectToLogin(true)
+        navigate('/login')
       } catch (error) {
         setError(true)
       }
-    }
-
-    if(redirectToLogin){
-      return navigate('/login')
     }
 
     return (
@@ -50,4 +45,4 @@ const RegisterForm = () => {
     )
 }
 
-export default RegisterForm
+export default RegisterForm;
