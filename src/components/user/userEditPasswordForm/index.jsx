@@ -42,9 +42,9 @@ function FormEditPasswordUser () {
         <h2>Personal information</h2>
         <div className="cardComponent">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="password">New Password: </label>
+            <label htmlFor="password">New Password:</label>
             <input type="password" id='password' name='password' required value={fields.password} onChange={handleFieldsChange} className='password'/>
-            <label htmlFor="passwordConfirmation">Password Confirmation</label>
+            <label htmlFor="passwordConfirmation">Password Confirmation:</label>
             <input type="password" id='passwordConfirmation' name='passwordConfirmation' required value={fields.passwordConfirmation} onChange={handleFieldsChange} className='passwordConfirmation' />
             <button className='submitButton' type='submit'>Update</button>
           </form>

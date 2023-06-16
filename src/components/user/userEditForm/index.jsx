@@ -47,9 +47,9 @@ function FormEditUser () {
         <h2>Personal information</h2>
         <div className="cardComponent">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name: </label>
+            <label htmlFor="name">Full name:</label>
             <input type="text" id='name' required name='name' value={fields.name} className='name' onChange={handleFieldsChange}/>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email:</label>
             <input type="text" id='email' required name='email' value={fields.email} className='email'  onChange={handleFieldsChange}/>
             <button className='submitButton' type='submit'>Update</button>
           </form>
