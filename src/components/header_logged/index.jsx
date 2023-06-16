@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { BsXLg } from 'react-icons/bs';
 import { FaList } from 'react-icons/fa';
@@ -10,12 +10,26 @@ import "./index.scss";
 function HeaderLogged(props) {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [iconActive, setIconActive] = useState(false);
+  const [nameMatch, setName] = useState("")
+
+
+  useEffect(() => {
+    if(props.setChangeName){
+      const { name } = JSON.parse(localStorage.getItem('user'));
+      const regex = /^(\S+)/;
+      const nameMatch = name.match(regex)[0];
+      setName(nameMatch)
+      props.setChangeName(false)
+    }else{
+      const { name } = JSON.parse(localStorage.getItem('user'));
+      const regex = /^(\S+)/;
+      const nameMatch = name.match(regex)[0];
+      setName(nameMatch)
+    }
+    
+  }, [props.changeName])
 
   const navigate = useNavigate()
-
-  const { name } = JSON.parse(localStorage.getItem('user'));
-  const regex = /^(\S+)/;
-  const nameMatch = name.match(regex)[0];
 
 
   const toggleMenu = () => {

@@ -7,7 +7,7 @@ const initial = {
   email: "email"
 }
 
-function FormEditUser () {
+function FormEditUser (props) {
   const [fields, setFields] = useState(initial)
   const [status, setStatus] = useState("");
 
@@ -34,8 +34,8 @@ function FormEditUser () {
     setStatus('')
     try {
       await UsersServices.update({ email: fields.email, name: fields.name })
-      window.location.reload()
-      window.alert("Name and email successfully updated")
+      props.setChangeName(true)
+      setStatus("success")
     } catch (error) {
       setStatus('error')
     }
@@ -53,6 +53,7 @@ function FormEditUser () {
             <input type="text" id='email' required name='email' value={fields.email} className='email'  onChange={handleFieldsChange}/>
             <button className='submitButton' type='submit'>Update</button>
           </form>
+          {status === "success" && <p style={{color: "green", padding: '0'}}>Name and email successfully updated</p>}
           {status === "error" && <p style={{color: "red"}}>Error updating email or password</p>}
         </div>
       </div>
