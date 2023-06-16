@@ -7,7 +7,7 @@ const initial = {
   email: "email"
 }
 
-function FormEditUser () {
+function FormEditUser (props) {
   const [fields, setFields] = useState(initial)
   const [status, setStatus] = useState("");
 
@@ -34,8 +34,8 @@ function FormEditUser () {
     setStatus('')
     try {
       await UsersServices.update({ email: fields.email, name: fields.name })
-      window.location.reload()
-      window.alert("Name and email successfully updated")
+      props.setName(fields.name)
+      window.alert("Name and email successfully updated, please,")
     } catch (error) {
       setStatus('error')
     }
