@@ -30,7 +30,7 @@ const RegisterForm = () => {
 
     return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
+      <label htmlFor="name">Full name:</label>
       <input type="text" name="name" id="name" autoComplete="off" placeholder="Type your name" value={fields.name} required onChange={handleFieldsChange}/>
       <label htmlFor="email">Email:</label>
       <input type="text" name="email" id="email" autoComplete="off" placeholder="Type your e-mail" value={fields.email} required onChange={handleFieldsChange}/>
