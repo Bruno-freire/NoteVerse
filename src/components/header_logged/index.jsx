@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { BsXLg } from 'react-icons/bs';
 import { FaList } from 'react-icons/fa';
@@ -10,18 +10,12 @@ import "./index.scss";
 function HeaderLogged(props) {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [iconActive, setIconActive] = useState(false);
-  const [name, setName] = useState('')
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const nameInitial = props.name;
-    const regex = /^(\S+)/;
-    const match = nameInitial.match(regex);
-    const nameMatch = match ? match[0] : "";
-    setName(nameMatch);
-  }, [props.name]);
-  
+  const { name } = JSON.parse(localStorage.getItem('user'));
+  const regex = /^(\S+)/;
+  const nameMatch = name.match(regex)[0];
 
 
   const toggleMenu = () => {
@@ -63,7 +57,7 @@ function HeaderLogged(props) {
           />
         )}
         <div className="nav-itens ">
-          <div onClick={toggleMenu} className="name">{name}</div>
+          <div onClick={toggleMenu} className="name">{nameMatch}</div>
         </div>
       </nav>
       <nav className="nav-hamburguer">
