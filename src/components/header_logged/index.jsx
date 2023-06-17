@@ -71,7 +71,7 @@ function HeaderLogged(props) {
           />
         )}
         <div className="nav-itens ">
-          <div onClick={toggleMenu} className="name">{nameMatch}</div>
+          <div onClick={toggleMenu} className={`name ${isMenuActive ? "active" : ""}`}>{nameMatch}</div>
         </div>
       </nav>
       <nav className="nav-hamburguer">

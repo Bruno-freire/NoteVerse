@@ -65,6 +65,8 @@
 
 .active{
   display: flex;
+  background-color: white;
+  color: $customPurple !important;
 }
 .nav-itens-hamburguer{
   position: absolute;
