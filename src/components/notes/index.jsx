@@ -10,6 +10,7 @@ const Notes = (props) => {
   const [notes, setNotes] = useState([]);
   const [currentNote, setCurrentNote] = useState({title: '', body: '', id: ''});
   const [query, setQuery] = useState("");   
+  const [loading, setLoading] = useState(false)
   
   async function fetchNotes() {
     const response = await NotesService.index();
@@ -24,8 +25,10 @@ const Notes = (props) => {
   }
 
   const createNote = async () => {
+    setLoading(true)
     await NotesService.create();
-    fetchNotes()
+    await fetchNotes()
+    setLoading(false)
   }
 
   const deleteNote = async (note) => {
@@ -85,6 +88,7 @@ const Notes = (props) => {
       notes={notes}
       selectNote={selectNote} 
       currentNote={currentNote} 
+      loading={loading}
       createNote={createNote}
       deleteNote={deleteNote}
       />
