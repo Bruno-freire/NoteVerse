@@ -28,7 +28,7 @@ const ListNotes = (props) => {
     <>
       <div id="noteHeader">
         <h2><span>{notes.length}</span> Notes</h2>
-        <button id="newNote" onClick={() => props.createNote()}>{!props.loading && 'Note +'}{props.loading && <AiOutlineLoading3Quarters id="iconLoading"/>}</button>
+        <button id="newNote" onClick={() => props.createNote()}>{!props.loading ? 'Note +' : <AiOutlineLoading3Quarters id="iconLoading"/>}</button>
       </div>
       <div className="notesList">
         {notes.map((item, key) => {
