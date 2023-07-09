@@ -1,4 +1,3 @@
-import presentation from '../../assets/images/presentation.png'
 import Header from '../../components/header'
 import Section from '../../components/section'
 

@@ -1,6 +1,5 @@
 import Header from "../../../components/header";
 import logoImg from '../../../assets/images/logo.png'
-import RegisterForm from "../../../components/auth/register_form";
 import './index.scss'
 import LoginForm from "../../../components/auth/users_form";
 
