@@ -10,6 +10,7 @@ const initialState = {
 const RegisterForm = () => {
     const [fields, setFields] = useState(initialState)
     const [error, setError] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleFieldsChange = event => {
       setFields({
@@ -30,15 +31,19 @@ const RegisterForm = () => {
       return;
     }
     try {
+      setIsLoading(true)
       const emailMatch = fields.email.match(/^\s*([a-zA-Z0-9_.+-]{4,})@([a-zA-Z0-9-]+)\.([a-zA-Z0-9-.]{2,})\s*$/);
       if (emailMatch) {
         const email = `${emailMatch[1]}@${emailMatch[2]}.${emailMatch[3]}`;
         await UsersServices.register({ name: fields.name, email, password: fields.password });
+        setIsLoading(false)
         navigate('/login');
       } else {
+        setIsLoading(false)
         setError("Invalid email format");
       }
     } catch (error) {
+      setIsLoading(false)
       setError("Invalid password or email");
     }
   };
@@ -60,7 +65,7 @@ const RegisterForm = () => {
       {error === "Invalid password or email" && <p style={{color: 'rgb(255, 0, 0)', margin: '0'}}>Invalid password or email</p>}
       <div className="btnLoginOrRegister">
         <NavLink to='/login'><p className="login text">Login or</p></NavLink>
-        <button type='submit' className="register text">Register</button>
+        <button type='submit' className="register text">{isLoading ? <AiOutlineLoading3Quarters id='iconLoading'/> : "Register"}</button>
       </div>
     </form>
     )

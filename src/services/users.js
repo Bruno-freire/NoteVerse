@@ -25,7 +25,6 @@ const UsersServices = {
   },
   updatePassword: async (params) => {
     const response = await Api.put('/users/password', params, { headers: {'x-access-token': localStorage.getItem('token')} })
-    console.log(response)
   }
 }
 

@@ -37,6 +37,10 @@ const Notes = (props) => {
   }
 
   const updateNote = async (params) => {
+    if(notes.length == 0){
+      window.alert("Você deve criar uma nota antes de poder salvar.")
+      return
+    }
     const updatedNote = await NotesService.update(currentNote._id, params);
     const updatedNotes = notes.map((note) => {
       if (note._id === updatedNote.data._id) {

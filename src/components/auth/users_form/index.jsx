@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import './index.scss'
 import { useState, useEffect } from 'react'
 import UsersServices from '../../../services/users'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 const initialState = {
   email: '',
@@ -12,6 +13,7 @@ const LoginForm = () => {
   const [fields, setFields] = useState(initialState)
   const [redirectToNotes, setRedirectToNotes] = useState(false)
   const [error, setError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleFieldsChange = event => {
@@ -23,11 +25,15 @@ const LoginForm = () => {
 
   const handleSubmit = async event => {
     event.preventDefault()
+    setError(false)
     try {
+      setIsLoading(true)
       await UsersServices.login({ email: fields.email, password: fields.password })
+      setIsLoading(false)
       setRedirectToNotes(true)
     } catch (error) {
       setError(true)
+      setIsLoading(false)
     }
   }
 
@@ -49,7 +55,7 @@ const LoginForm = () => {
           <p>Register or</p>
         </NavLink>
         <button type="submit" className="loginForm">
-          Login
+          {isLoading ? <AiOutlineLoading3Quarters id='iconLoading'/> : "Login"}
         </button>
       </div>
     </form>
