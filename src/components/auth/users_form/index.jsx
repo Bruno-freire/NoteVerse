@@ -9,12 +9,27 @@ const initialState = {
   password: ''
 }
 
+
 const LoginForm = () => {
   const [fields, setFields] = useState(initialState)
   const [redirectToNotes, setRedirectToNotes] = useState(false)
   const [error, setError] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingWithoutAccount, setIsLoadingWithoutAccount] = useState(false)
   const navigate = useNavigate()
+
+  const generateRandomCode = (length) => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
+  const handleLoginWithoutAccount = async () => {
+    const randomCode = generateRandomCode(10)
+    setIsLoadingWithoutAccount(true)
+    await UsersServices.loginWithoutAccount(randomCode)
+    setIsLoadingWithoutAccount(false)
+    navigate('/notes')
+  }
 
   const handleFieldsChange = event => {
     setFields({
@@ -50,6 +65,7 @@ const LoginForm = () => {
       <label htmlFor="password">Password:</label>
       <input type="password" name="password" id="password" autoComplete="off" placeholder="Type your password" value={fields.password} required onChange={handleFieldsChange} />
       {error && <p style={{ color: 'rgb(255, 0, 0)', margin: '0' }}>Invalid password or email</p>}
+      {isLoadingWithoutAccount ? <AiOutlineLoading3Quarters className='iconLoadingWithoutAccount' id='iconLoading'/> : <button className='loginWithoutAccount' type='button' onClick={handleLoginWithoutAccount} >Sign in to the application without creating an account</button>}
       <div className="btnLoginOrRegister">
         <NavLink to="/register" className="registerForm">
           <p>Register or</p>

@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 
 import logoImg from '../../assets/images/logo-white.png';
 import "./index.scss";
+import UsersServices from "../../services/users";
 
 function HeaderLogged(props) {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -37,10 +38,15 @@ function HeaderLogged(props) {
     setIconActive(!iconActive);
   };
 
-  const handleRemoveUserAndToken = () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    navigate('/login')
+  const handleRemoveUserAndToken = async () => {
+    if (localStorage.getItem('tester')) {
+      await UsersServices.delete()
+      navigate('/login')
+    } else {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      navigate('/login')
+    }
   };
 
   const handleEditUser = () => {

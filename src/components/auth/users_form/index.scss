@@ -16,6 +16,16 @@
   }
 }
 
+.iconLoadingWithoutAccount{
+  margin-left: 50%;
+}
+
+.loginWithoutAccount{
+  border: none;
+  background-color: transparent;
+  color: $customPurple;
+}
+
 .registerForm{
   & > p {
     color: $customPurple !important;
