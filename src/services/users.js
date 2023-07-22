@@ -27,14 +27,20 @@ const UsersServices = {
     localStorage.setItem('user', JSON.stringify(userLocal))
   },
   updatePassword: async (params) => {
-    const response = await Api.put('/users/password', params, { headers: {'x-access-token': localStorage.getItem('token')} })
+    await Api.put('/users/password', params, { headers: {'x-access-token': localStorage.getItem('token')} })
   },
   loginWithoutAccount: async (params) => {
-    await Api.post('/users/register', {email: `${params}@gmail.com`, password: params, name: "Tester"})
+    await Api.post('/users/register', {email: `${params}@gmail.com`, password: params, name: "userNull"})
     const response = await Api.post('/users/login', {email: `${params}@gmail.com`, password: params})
     localStorage.setItem('user', JSON.stringify(response.data.user))
     localStorage.setItem('token', response.data.token)
-    localStorage.setItem('tester', "ok")
+    localStorage.setItem('userNull', "ok")
+  },
+  authenticationSendCode: async (params) => {
+    Api.post('/users/authentication/send-code', params)
+  },
+  authenticationVerifyCode: async (params) => {
+    await Api.post('/users/authentication/verify-code', params)
   }
 }
 

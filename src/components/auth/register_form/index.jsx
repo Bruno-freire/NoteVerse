@@ -51,9 +51,10 @@ const RegisterForm = () => {
     try {
       const email = `${emailMatch[1]}@${emailMatch[2]}.${emailMatch[3]}`;
       await UsersServices.register({ name: fields.name, email, password: fields.password });
-      navigate('/login');
+      await UsersServices.authenticationSendCode(email)
+      navigate('/auth/code', {state: {name: fields.name, email}});
     } catch (error) {
-      setError("E-mail already registered");
+      setError(error.message);
     }
 
     setIsLoading(false);

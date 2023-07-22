@@ -13,7 +13,7 @@ const initialState = {
 const LoginForm = () => {
   const [fields, setFields] = useState(initialState)
   const [redirectToNotes, setRedirectToNotes] = useState(false)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingWithoutAccount, setIsLoadingWithoutAccount] = useState(false)
   const navigate = useNavigate()
@@ -40,15 +40,19 @@ const LoginForm = () => {
 
   const handleSubmit = async event => {
     event.preventDefault()
-    setError(false)
+    setError("")
     try {
       setIsLoading(true)
       await UsersServices.login({ email: fields.email, password: fields.password })
       setIsLoading(false)
       setRedirectToNotes(true)
     } catch (error) {
-      setError(true)
+      setError(error.response.data.error)
       setIsLoading(false)
+      if(error.response.data.error === 'unauthenticated email'){
+        await UsersServices.authenticationSendCode({email: fields.email})
+        navigate('/auth/code', {state: {email: fields.email}})
+      }
     }
   }
 
@@ -64,7 +68,7 @@ const LoginForm = () => {
       <input type="text" name="email" id="email" autoComplete="off" placeholder="Type your email" value={fields.email} required onChange={handleFieldsChange} />
       <label htmlFor="password">Password:</label>
       <input type="password" name="password" id="password" autoComplete="off" placeholder="Type your password" value={fields.password} required onChange={handleFieldsChange} />
-      {error && <p style={{ color: 'rgb(255, 0, 0)', margin: '0' }}>Invalid password or email</p>}
+      {error && <p style={{ color: 'rgb(255, 0, 0)', margin: '0' }}>{error}</p>}
       {isLoadingWithoutAccount ? <AiOutlineLoading3Quarters className='iconLoadingWithoutAccount' id='iconLoading'/> : <button className='loginWithoutAccount' type='button' onClick={handleLoginWithoutAccount} >Sign in to the application without creating an account</button>}
       <div className="btnLoginOrRegister">
         <NavLink to="/register" className="registerForm">
