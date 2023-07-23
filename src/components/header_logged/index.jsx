@@ -39,7 +39,7 @@ function HeaderLogged(props) {
   };
 
   const handleRemoveUserAndToken = async () => {
-    if (localStorage.getItem('tester')) {
+    if (localStorage.getItem('userNull')) {
       await UsersServices.delete()
       navigate('/login')
     } else {
