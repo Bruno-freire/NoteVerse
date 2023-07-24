@@ -1,7 +1,7 @@
 import Api from './api'
 
 const UsersServices = {
-  register: (params) => Api.post('/users/register', params),
+  register: async (params) => await Api.post('/users/register', params),
   login: async (params) => {
     const response = await Api.post('/users/login', params)
     localStorage.setItem('user', JSON.stringify(response.data.user))
@@ -37,7 +37,7 @@ const UsersServices = {
     localStorage.setItem('userNull', "ok")
   },
   authenticationSendCode: async (params) => {
-    Api.post('/users/authentication/send-code', params)
+    await Api.post('/users/authentication/send-code', params)
   },
   authenticationVerifyCode: async (params) => {
     await Api.post('/users/authentication/verify-code', params)

@@ -51,10 +51,10 @@ const RegisterForm = () => {
     try {
       const email = `${emailMatch[1]}@${emailMatch[2]}.${emailMatch[3]}`;
       await UsersServices.register({ name: fields.name, email, password: fields.password });
-      await UsersServices.authenticationSendCode(email)
-      navigate('/auth/code', {state: {name: fields.name, email}});
+      await UsersServices.authenticationSendCode({email})
+      navigate('/auth/code', {state: {name: fields.name, email: email.toLowerCase().trim()}});
     } catch (error) {
-      setError(error.message);
+      setError(error.response.data.error);
     }
 
     setIsLoading(false);
