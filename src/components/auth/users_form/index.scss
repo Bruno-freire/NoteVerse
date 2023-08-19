@@ -32,3 +32,16 @@
     color: $customPurple !important;
   }
 }
+
+#view{
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+
+.AiFillEyes{
+  display: flex;
+  position: absolute;
+  right: 0.25em;
+  bottom: 0.74em;
+}

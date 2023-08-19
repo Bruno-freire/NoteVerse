@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import './index.scss'
 import { useState, useEffect } from 'react'
 import UsersServices from '../../../services/users'
-import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { AiOutlineLoading3Quarters, AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const initialState = {
   email: '',
@@ -16,7 +16,16 @@ const LoginForm = () => {
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingWithoutAccount, setIsLoadingWithoutAccount] = useState(false)
+  const [view, setView] = useState(false)
   const navigate = useNavigate()
+
+  const handleView = () => {
+    if(view){
+      setView(false)
+    }else{
+      setView(true)
+    }
+  }
 
   const generateRandomCode = (length) => {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -67,7 +76,8 @@ const LoginForm = () => {
       <label htmlFor="email">Email:</label>
       <input type="text" name="email" id="email" autoComplete="off" placeholder="Type your email" value={fields.email} required onChange={handleFieldsChange} />
       <label htmlFor="password">Password:</label>
-      <input type="password" name="password" id="password" autoComplete="off" placeholder="Type your password" value={fields.password} required onChange={handleFieldsChange} />
+      <input type={view ? 'text' : "password"} name="password" id="password" autoComplete="off" placeholder="Type your password" value={fields.password} required onChange={handleFieldsChange} />
+      <span id='view'>{view ? <AiFillEye className='AiFillEyes' onClick={handleView}/> : <AiFillEyeInvisible className='AiFillEyes' onClick={handleView}/>}</span>
       {error && <p style={{ color: 'rgb(255, 0, 0)', margin: '0' }}>{error}</p>}
       {isLoadingWithoutAccount ? <AiOutlineLoading3Quarters className='iconLoadingWithoutAccount' id='iconLoading'/> : <button className='loginWithoutAccount' type='button' onClick={handleLoginWithoutAccount} >Sign in to the application without creating an account</button>}
       <div className="btnLoginOrRegister">
