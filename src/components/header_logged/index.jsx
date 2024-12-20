@@ -7,6 +7,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import logoImg from '../../assets/images/logo-white.png';
 import "./index.scss";
 import UsersServices from "../../services/users";
+import { faker } from "@faker-js/faker";
 
 function HeaderLogged(props) {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -19,13 +20,23 @@ function HeaderLogged(props) {
       const { name } = JSON.parse(localStorage.getItem('user'));
       const regex = /^(\S+)/;
       const nameMatch = name.match(regex)[0];
-      setName(nameMatch)
+        if (localStorage.getItem('userNull')) {
+          const newName = faker.person.firstName()
+          setName(newName)
+        } else {
+          setName(nameMatch)
+        }
       props.setChangeName(false)
     }else{
       const { name } = JSON.parse(localStorage.getItem('user'));
       const regex = /^(\S+)/;
       const nameMatch = name.match(regex)[0];
-      setName(nameMatch)
+        if (localStorage.getItem('userNull')) {
+          const newName = faker.person.firstName()
+          setName(newName)
+        } else {
+          setName(nameMatch)
+        }
     }
     
   }, [props.changeName])
