@@ -44,7 +44,6 @@ function FormEditUser (props) {
   return (
     <>
       <div className="card">
-        <h2>Personal information</h2>
         <div className="cardComponent">
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Full name:</label>
